@@ -15,6 +15,8 @@ class ProductController extends Controller
        	          ->join('images', 'products.id','=', 'images.product_id')
        	          ->get();
 
+       	          
+
 
        	    
            return view('product.list',['list' => $list]);

@@ -27,4 +27,8 @@ Route::get('/image-upload','ImageController@ImageUpload')->name('image-upload');
 
 Route::post('/image-store','ImageController@ImageStore')->name('image-store');
 
-Route::get('/cart-add','CartController@test')->name('cart');
+Route::get('/cart-test','CartController@test')->name('cart');
+
+Route::post('/cart-add-item','CartController@addToCart')->name('add-cart-item');
+
+Route::get('/update-bar','CartController@UpdateBar')->name('cart-update-bar');
