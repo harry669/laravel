@@ -8,19 +8,31 @@ use Cart;
 use App\Product;
 use App\Price;
 use App\Cart as CartStorage;
+use App\User;
 class CartController extends Controller
 {
     //
         public function test()
         {
+        	 $current_user= Auth::user();
         	 $rowId= '8cbf215baa3b757e910e5305ab981172';
-           // $cart_obj= Cart::add('293ad', 'Product 1', 1, 9.99, 550);
+        	 $cart_content= Cart::instance($current_user)->content();
+        	 $cart_result=  $cart_content->search(function ($cartItem) {
+             	return $cartItem->id === "293ad";
+              });
+             
+             //Cart::instance($current_user)->add('293af', 'Product 2', 1, 9.99, 550,['user' => 1]);
+             //Cart::store('admin');
+             //$cart= Cart::instance($current_user)->content();
+             //$cart= Cart::instance($current_user)->store($current_user->id);
+             //Cart::associate($cart_obj->rowId, 'User');
+
            // Cart::update($rowId, 2);
         	//$cart_total= Cart::total();
             //$cart= Cart::content();
-        	Cart::destroy();
-        	 $cart= Cart::content();
-        	 dd($cart);
+        	//Cart::destroy();
+        	//$cart= Cart::content();
+        	 dd($cart_result);
         }
 
         public function addToCart(Request $request)
